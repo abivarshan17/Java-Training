@@ -1,0 +1,174 @@
+BUBBLE SORT 
+
+
+import java.util.*;
+public class Main
+{
+    static void bubble(int arr[],int n)
+    {
+        int i,j;
+        for(i=0;i<n-1;i++)
+        {
+            for(j=0;j<n-i-1;j++)
+            {
+                int temp=arr[j];
+                arr[j]=arr[j+1];
+                arr[j+1]=temp;
+            }
+        }
+        for(i=0;i<n;i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+    }
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		int n=s.nextInt();
+		int arr[]=new int[n];
+		for(int i=0;i<n;i++)
+		{
+		    arr[i]=s.nextInt();
+		}
+		bubble(arr,n);
+	}
+}
+
+
+INSERTION SORT 
+
+
+import java.util.*;
+public class Main
+{
+    static void insert(int arr[],int n)
+    {
+        int i,j,key;
+        for(j=1;j<n;i++)
+        {
+            key=arr[j];
+            i=j-1;
+            while(i>=0 && arr[i]>key)
+            {
+                arr[i+1]=arr[i];
+                i=i-1;
+            }
+            arr[i+1]=key;
+        }
+        for(i=0;i<n;i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+    }
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		int n=s.nextInt();
+		int arr[]=new int[n];
+		for(int i=0;i<n;i++)
+		{
+		    arr[i]=s.nextInt();
+		}
+		insert(arr,n);
+	}
+}
+
+
+QUICK SORT 
+
+import java.util.*;
+public class Main
+{
+      static void swap(int arr[],int st,int end)
+    {
+        int temp=arr[st];
+        arr[st]=arr[end];
+        arr[end]=temp;
+    }
+    static int partition(int arr[],int st,int end)
+    {
+        int pivot=arr[end];
+        int pi=(st-1);
+        for(int i=st;i<end;i++)
+        {
+            if(arr[i]<pivot)
+            {
+                ++pi;
+                swap(arr,i,pi);
+            }
+            ++pi;
+            swap(arr,pi,end);
+        }
+        return pi;
+    }
+  
+    static void print(int arr[],int n)
+    {
+        for(int i=0;i<n;i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+    }
+    static void quick(int arr[],int st,int end)
+    {
+        if(st<end)
+        {
+        int pi=partition(arr,st,end);
+        quick(arr,st,pi-1);
+        quick(arr,pi+1,end);
+        }
+    }
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		int n=s.nextInt();
+		int arr[]=new int[n];
+		for(int i=0;i<n;i++)
+		{
+		    arr[i]=s.nextInt();
+		}
+		quick(arr,0,n-1);
+		print(arr,n);
+	}
+}
+
+SELECTION SORT
+
+import java.util.*;
+public class Main
+{
+    static void select(int arr[])
+    {
+        int n=arr.length;
+        int i,j,min=0;
+        for(i=0;i<n-1;i++)
+        {
+            min=i;
+            for(j=i+1;j<n;j++)
+            {
+                if(arr[j]<arr[min])
+                {
+                    min=j;
+                }
+            }
+            int temp=arr[min];
+            arr[min]=arr[i];
+            arr[i]=temp;
+        }
+        for(i=0;i<n;i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+    }
+  
+	public static void main(String[] args) 
+	{
+		Scanner s=new Scanner(System.in);
+		int n=s.nextInt();
+		int arr[]=new int[n];
+		for(int i=0;i<n;i++)
+		{
+		    arr[i]=s.nextInt();
+		}
+		select(arr);
+	
+	}
+}
+
